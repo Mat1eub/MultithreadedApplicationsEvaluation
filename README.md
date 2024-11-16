@@ -18,3 +18,5 @@ Si le problème est que chaque philosphe doive prendre 2 ressources et le faire 
 Il suffirait de supprimer une de ces conditions pour éviter un deadlock.
 
 Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 fourchettes mais jamais une seule. De plus, le dernier philosophe commence par prendre la fourchette de gauche tandis que les autres commencent par la fourchette de droite. Pourquoi cette deuxième condition ? Car il faut toujours garder en tête qu'un philosophe pourrait être trop lent et risquer de ne jamais avoir de fourchette disponible.
+
+## Problème des producteurs-consommateurs
