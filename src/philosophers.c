@@ -1,13 +1,11 @@
 #include <semaphore.h>
 #include <stdio.h>
+#include "../headers/philosopher.h"
 
-/* Initialisation des variables */
-#define N 5              // Nombre de philosophes à entrer par ligne de commande
 #define COUNT 10e6       // Nombre de cycles penser/manger
-sem_t forks[N];          // Une sémaphore pour chaque fourchette
 
-void* philosopher(void* j) {
-    int i = *(int*)j;             
+void* philosopher(void* param) {
+    int i = *(int*)param;             
     int right = i;                   
     int left = (i + 1) % N;          
 
