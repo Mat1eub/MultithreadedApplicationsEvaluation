@@ -18,7 +18,7 @@ Then we have the Makefile to execute everything :
 | Command                     | What does it really do                                                                                                 | Default parameters |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | `make philosophers N=...` | Compile and execute the philosophers' problem with N philosphers (we may consider running test with this command too) | N=5                |
-| `make prodcons`           |                                                                                                                        |                    |
+| `make producercons`ummer  |                                                                                                                        |                    |
 |                             |                                                                                                                        |                    |
 | `make clean`              |                                                                                                                        |                    |
 |                             |                                                                                                                        |                    |
@@ -66,3 +66,4 @@ Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 f
 * [ ] Translate to english
 * [ ] Illustrations for problems
 * [ ] Finish how to execute
+* [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
