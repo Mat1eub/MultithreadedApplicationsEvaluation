@@ -56,5 +56,7 @@ int main(int argc, char* argv[]) {
 
     free(forks);
 
+    /* Producer/Consummer problem */
+
     return 0;
 }
