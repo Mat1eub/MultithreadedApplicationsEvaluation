@@ -82,3 +82,4 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 * [ ] Illustrations for problems
 * [ ] Finish how to execute
 * [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
+* [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers 
