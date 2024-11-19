@@ -60,10 +60,25 @@ Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 f
 // + que le seuil
 
 
+
+## Problème des lecteurs-écrivains
+
+Le problème peut être grossièrement résumé par la situation suivante : Il y a 2 types de processus : les lecteurs qui lisent uniquement l'information et peuvent simultanément avoir accès à la section critique sans problème. Les écrivains qui écrivent/modifient l'information et s'y voient imposer une exclusion mutuelle stricte.
+
+Qui pourrait-on retrouver avec l'accès à la section critique : 
+- plusieurs lecteurs avec 0 écrivains,
+- 0 lecteur avec 1 seul écrivain.
+  
+Lorsqu'un écrivain modifie la structure de données, gardons en tête que cette dernière n'est pas accessible à un lecteur car ceci entraverait la concurrence et ne donnerait pas un bon résulat.
+
+On veut donc un accès **partagé** en lecture et un accès **exclusif** en écriture, une première esquisse de solution apparaît : 
+- il faut que le premier lecteur gagne l'accès avec un sémaphore pour que les prochains lecteurs puissent accéder à la structure de donnée tant qu'il reste au moins un lecteur. Il faut donc garder une trace du nombre de lecteur en jeu,
+- chaque rédacteur doit gagner l'accès avec un sémaphore.
+
 # TO DO
 
 * [ ] Maybe too much, but a simulation of philosophers problem ?
-* [ ] Translate to english
+* [ ] Translate to english / Or maybe not ? c'est plus sympa à lire en français
 * [ ] Illustrations for problems
 * [ ] Finish how to execute
 * [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
