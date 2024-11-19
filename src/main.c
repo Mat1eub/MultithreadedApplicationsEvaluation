@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #include <semaphore.h>
 #include "../headers/philosopher.h"
+#include "../headers/readerswriters.h"
 
-int N;
-sem_t* forks;
 
 int main(int argc, char* argv[]) {
     
@@ -55,6 +54,8 @@ int main(int argc, char* argv[]) {
     }
 
     free(forks);
+    /* Readers-writers' problem */
+
 
     return 0;
 }
