@@ -37,8 +37,6 @@ Un premier problème apparait assez rapidement en analysant la situation. Si tou
 
 Si le problème est que chaque philosophe doive prendre 2 ressources et le faire :
 
-Si le problème est que chaque philosphe doive prendre 2 ressources et le faire :
-
 - en 2 étapes,
 - tous dans le même ordre,
 - sans retour en arrière possible,
@@ -48,23 +46,17 @@ Il suffirait de supprimer une de ces conditions pour éviter un deadlock.
 Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 fourchettes mais jamais une seule (première des 3 conditions). De plus, le dernier philosophe commence par prendre la fourchette de gauche tandis que les autres commencent par la fourchette de droite (deuxième condition). Pourquoi cette deuxième condition ? Car il faut toujours garder en tête qu'un philosophe pourrait être trop lent et risquer de ne jamais avoir de fourchette disponible.
 
 ## Problème des producteurs-consommateurs
-
-
 // On met l'incrémentation dans le même mutex_prodcons,
 
 // une idée de faire autrement c'est de rajouter un mutex_prodcons pour incrémenter cette variable
 
 // (un thread incrémentera en même temps qu'un autre produira ca peut etre pas mal)
 
-
 // Parler dans le readme ou initialement que j'avais d'abord penser faire un while(1) if prodcount<10 : do else : break
 
 // sans penser qu'en fait plusieurs threads vont verifier cette condition et acceder au bloc dans le if et donc ca va produire
 
 // + que le seuil
-
-
-
 ## Problème des lecteurs-écrivains
 
 Le problème peut être grossièrement résumé par la situation suivante : Il y a 2 types de processus : les lecteurs qui lisent uniquement l'information et peuvent simultanément avoir accès à la section critique sans problème. Les écrivains qui écrivent/modifient l'information et s'y voient imposer une exclusion mutuelle stricte.
@@ -89,3 +81,4 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 * [ ] Finish how to execute
 * [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
 * [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers
+=======
