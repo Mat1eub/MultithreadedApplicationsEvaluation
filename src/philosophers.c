@@ -1,6 +1,6 @@
 #include <semaphore.h>
 #include <stdio.h>
-#include "../headers/philosopher.h"
+#include "../headers/philosophers.h"
 
 #define COUNT 10e6       // Nombre de cycles penser/manger
 

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <semaphore.h>
-#include "../headers/philosopher.h"
+#include "../headers/philosophers.h"
 #include "../headers/producerconsummer.h"
 
 #define BUFFER_SIZE 8 // Prod/Cons problem
