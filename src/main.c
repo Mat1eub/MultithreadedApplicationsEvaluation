@@ -6,15 +6,15 @@
 #include "../headers/philosophers.h"
 #include "../headers/producerconsummer.h"
 
-#define BUFFER_SIZE 8
+#define BUFFER_SIZE 8 // Prod/Cons problem
 
 // Philo's problem
 int N;
 sem_t* forks;
 
 // Prod/cons problem
-int A;
-int B;
+int P;
+int C;
 pthread_mutex_t mutex_prodcons;
 sem_t cvides;
 sem_t cremplies;
@@ -22,12 +22,12 @@ sem_t cremplies;
 
 int main(int argc, char* argv[]) {
     
-    /*********************** */
+    /*************************/
     /* Philosophers' problem */
-    /*********************** */
+    /*************************/
     if (strcmp(argv[0],"./philosophers_exec")==0){
         if (argc != 2) {
-            fprintf(stderr, "Usage: %s <number_of_philosophers>\n", argv[0]);
+            fprintf(stderr, "Usage: %s N=<number_of_philosophers>\n", argv[0]);
             return 1;
         }
 
@@ -76,49 +76,47 @@ int main(int argc, char* argv[]) {
     /**********************************/
     if(strcmp(argv[0],"./producerconsummer_exec")==0){
         if (argc != 3) {
-            fprintf(stderr, "Usage: %s <number_of_producers> <number_of_consummers>\n", argv[0]);
+            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n", argv[0]);
             return 1;
         }
 
         // Get A&B from commande line
-        A = atoi(argv[1]);
-        if (A <= 0) {
+        P = atoi(argv[1]);
+        if (P <= 0) {
             fprintf(stderr, "Invalid number of producers.\n");
             return 1;
         }
 
-        B = atoi(argv[2]);
-        if (B <= 0) {
+        C = atoi(argv[2]);
+        if (C <= 0) {
             fprintf(stderr, "Invalid number of consummers.\n");
             return 1;
         }
         
         // Initialization
-        //int indices_prod[A];
-        pthread_t producers[A];
-
-        //int indices_cons[B];
-        pthread_t consummers[B];
+        pthread_t producers[P];     // Threads for each producers
+        pthread_t consummers[C];    // Threads for each consummers
         
         pthread_mutex_init(&mutex_prodcons, NULL);
-        sem_init(&cvides,0,BUFFER_SIZE); // 8 number of slots in the buffer
+        sem_init(&cvides,0,BUFFER_SIZE);
         sem_init(&cremplies,0,0);
 
-        for (size_t i = 0; i < A; i++)
+        // Starting threads' work
+        for (size_t i = 0; i < P; i++)
         {
-            pthread_create(&producers[i], NULL,producer,(void*)producers);
+            pthread_create(&producers[i], NULL,producer,(void*)producers[i]);
         }
 
-        for (size_t i = 0; i < B; i++)
+        for (size_t i = 0; i < C; i++)
         {
             pthread_create(&consummers[i], NULL,consummer,NULL);
         }
         
         // Threads' results
-        for (int i = 0; i < A; i++) {
+        for (int i = 0; i < P; i++) {
             pthread_join(producers[i], NULL);
         }
-        for (int i = 0; i < B; i++) {
+        for (int i = 0; i < C; i++) {
             pthread_join(consummers[i], NULL);
         }
         
