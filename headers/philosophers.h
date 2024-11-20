@@ -1,5 +1,5 @@
-#ifndef PHILOSOPHER_H
-#define PHILOSOPHER_H
+#ifndef PHILOSOPHERS_H
+#define PHILOSOPHERS_H
 
 #include <semaphore.h>
 

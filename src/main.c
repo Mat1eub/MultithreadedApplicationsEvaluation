@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <semaphore.h>
-#include "../headers/philosopher.h"
+#include "../headers/philosophers.h"
 
 int N;
 sem_t* forks;
