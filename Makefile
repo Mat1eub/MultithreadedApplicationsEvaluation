@@ -34,10 +34,12 @@ $(PHILO): $(OBJ)
 philosophers: $(PHILO)
 	make clean
 
-# =========== PRODUCER & CONSUMMER ============
+# =========== PRODUCERS & CONSUMMERS ============
 $(PRODCONS): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) run EXEC=$(PRODCONS) ARG=$(A) $(B)
+	$(MAKE) run EXEC=$(PRODCONS) ARG="$(A) $(B)"
+
+prodcons: $(PRODCONS)
 
 # Pour exécuter chaque exécutable après la compilation
 
@@ -51,6 +53,6 @@ run:
 	./$(EXEC) $(ARG)
 
 clean:
-	rm -f $(OBJ) $(PHILO) $(PHILO2)
+	rm -f $(OBJ) $(PHILO) $(PRODCONS) $(PHILO2)
 
 .PHONY: clean run philosophers all
