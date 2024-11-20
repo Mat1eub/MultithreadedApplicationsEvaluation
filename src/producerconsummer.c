@@ -46,8 +46,6 @@ void* producer(void* arg){
     return NULL;
 }
 
-
-// Garder le producer's id bien comme j'ai fait, mettre un compteur de consummer et producer et compter le nombre de fois
 void* consummer(void* arg){
     static int ic = 0;
     while(1){
