@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <semaphore.h>
 #include "../headers/philosophers.h"
 #include "../headers/producerconsummer.h"
@@ -24,7 +25,7 @@ int main(int argc, char* argv[]) {
     /*********************** */
     /* Philosophers' problem */
     /*********************** */
-    if (argv[0] == "./philosophers_exec"){
+    if (strcmp(argv[0],"./philosophers_exec")==0){
         if (argc != 2) {
             fprintf(stderr, "Usage: %s <number_of_philosophers>\n", argv[0]);
             return 1;
@@ -73,7 +74,7 @@ int main(int argc, char* argv[]) {
     /**********************************/
     /* Producer - Consummer's problem */
     /**********************************/
-    if(argv[0] == "./producerconsummer_exec"){
+    if(strcmp(argv[0],"./producerconsummer_exec")==0){
         if (argc != 3) {
             fprintf(stderr, "Usage: %s <number_of_producers> <number_of_consummers>\n", argv[0]);
             return 1;
@@ -93,10 +94,10 @@ int main(int argc, char* argv[]) {
         }
         
         // Initialization
-        int indices_prod[A];
+        //int indices_prod[A];
         pthread_t producers[A];
 
-        int indices_cons[B];
+        //int indices_cons[B];
         pthread_t consummers[B];
         
         pthread_mutex_init(&mutex_prodcons, NULL);
@@ -105,14 +106,12 @@ int main(int argc, char* argv[]) {
 
         for (size_t i = 0; i < A; i++)
         {
-            indices_prod[i] = i;
-            pthread_create(&producers, NULL,producer,&indices_prod[i]);
+            pthread_create(&producers[i], NULL,producer,(void*)producers);
         }
 
         for (size_t i = 0; i < B; i++)
         {
-            indices_cons[i] = i;
-            pthread_create(&consummers, NULL,consummer,&indices_cons[i]);
+            pthread_create(&consummers[i], NULL,consummer,NULL);
         }
         
         // Threads' results
@@ -126,7 +125,6 @@ int main(int argc, char* argv[]) {
         pthread_mutex_destroy(&mutex_prodcons);
         sem_destroy(&cvides);
         sem_destroy(&cremplies);
-
-        return 0;
     }
+    return 0;
 }
