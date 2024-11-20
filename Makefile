@@ -29,16 +29,18 @@ $(PHILO): $(OBJ)
 
 philosophers: $(PHILO)
 
-# =========== PRODUCER & CONSUMMER ============
+# =========== PRODUCERS & CONSUMMERS ============
 $(PRODCONS): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) run EXEC=$(PRODCONS) ARG=$(A) $(B)
+	$(MAKE) run EXEC=$(PRODCONS) ARG="$(A) $(B)"
+
+prodcons: $(PRODCONS)
 
 # Pour exécuter chaque exécutable après la compilation
 run:
 	./$(EXEC) $(ARG)
 
 clean:
-	rm -f $(OBJ) $(PHILO)
+	rm -f $(OBJ) $(PHILO) $(PRODCONS)
 
 .PHONY: clean run philosophers all
