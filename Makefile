@@ -10,8 +10,8 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)  # Crée les fichiers .o dans objects
 
 # Valeur par défaut des variables
 N ?= 5
-A ?= 5
-B ?= 5
+P ?= 5
+C ?= 5
 
 # Pour l'instant philo, encore à décider d'un truc plus général
 all: $(PHILO)
@@ -32,13 +32,13 @@ philosophers: $(PHILO)
 # =========== PRODUCERS & CONSUMMERS ============
 $(PRODCONS): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) run EXEC=$(PRODCONS) ARG="$(A) $(B)"
+	$(MAKE) run EXEC=$(PRODCONS) ARG1=$(P) ARG2=$(C)
 
 prodcons: $(PRODCONS)
 
 # Pour exécuter chaque exécutable après la compilation
 run:
-	./$(EXEC) $(ARG)
+	./$(EXEC) $(ARG) $(ARG1) $(ARG2)
 
 clean:
 	rm -f $(OBJ) $(PHILO) $(PRODCONS)
