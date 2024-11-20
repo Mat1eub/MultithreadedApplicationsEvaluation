@@ -1,6 +1,10 @@
 #ifndef PRODUCERCONSUMMER_H
 #define PRODUCERCONSUMMER_H
 
+extern pthread_mutex_t mutex_prodcons;  // Mutex for the buffer
+extern sem_t cvides;           // Keeps track of the number of empty slot
+extern sem_t cremplies;        // Keeps track of the number of full slot
+
 /**
  * @brief Fonction exécutée par les threads producteurs
  * 
