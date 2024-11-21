@@ -2,86 +2,117 @@
 
 // https://gist.github.com/megaaa13/9fad5070cf79139a0be9b8c9a263fe5d
 
-void data();
-
 int rcount = 0;
 int wcount = 0;
-sem_t rsem ; // un seul 
+
+sem_t rsem ; 
 sem_t wsem ; 
 
 pthread_mutex_t rmutex;
 pthread_mutex_t wmutex;
-
-int main(){
-    sem_init(&rsem, 0, 1);
-    sem_init(&wsem, 0, 1);
-}
+pthread_mutex_t z;
 
 
-//writer
-void writer(){
-    while(true){
-
-        data();
-
-        // section critique
-        pthread_mutex_lock(&wmutex);
-        wcount++;
-        if (wcount==1)
-        { // arrivée du premier writer
-            sem_wait(&rsem);
-        }
-        pthread_mutex_unlock(&wmutex);
-
-
-        sem_wait(&wsem);
-        sem_post(&wsem);
-
-
-        // section critique
-        pthread_mutex_lock(&wmutex);
-        wcount--;
-        if(wcount==0)
-        { // départ du dernier writer
-            sem_post(&rsem);
-        }
-        pthread_mutex_unlock(&wmutex);
-
-        process_data();
-    }
-    
+// simulation activiter proceseur
+void data(){
+    for (int i = 0; i < 10000; i++);
 }
 
 // reader
-void reader(){
-    while(true){
+void* reader(){
+    while(1){
+
+        pthread_mutex_lock(&z);
 
         sem_wait(&rsem);
 
-
         // section critique
         pthread_mutex_lock(&rmutex);
+
         rcount++;
-        if (rcount==1)
-        { // arrivée du premier reader
-        sem_wait(&wsem);
-        }
+        if (rcount==1) sem_wait(&wsem); // arrivée du premier reader
+        
         pthread_mutex_unlock(&rmutex);
 
-
         sem_post(&rsem);
+
+        pthread_mutex_unlock(&z);
+
+
         read_database();
 
 
         // section critique
         pthread_mutex_lock(&rmutex);
-        rcount--;
-        if(rcount==0)
-        { // départ du dernier reader
-            sem_post(&wsem);
-        }
-        pthread_mutex_unlock(&rmutex);
 
-        process_data();
+        rcount--;
+        if(rcount==0) sem_post(&wsem); // départ du dernier reader
+        
+        pthread_mutex_unlock(&rmutex);
     }
+}
+
+//writer
+void* writer(){
+    while(1){
+
+        // section critique
+        pthread_mutex_lock(&wmutex);
+
+        wcount++;
+        if (wcount==1) sem_wait(&rsem); // arrivée du premier writer
+        
+        pthread_mutex_unlock(&wmutex);
+
+
+        sem_wait(&wsem);
+
+        data();
+
+        sem_post(&wsem);
+
+
+        // section critique
+        pthread_mutex_lock(&wmutex);
+        
+        wcount--;
+        if(wcount==0) sem_post(&rsem); // départ du dernier writer
+        
+        pthread_mutex_unlock(&wmutex);
+    }
+    
+}
+
+int main(int argc, char const *argv[]){
+
+    pthread_mutex_init(&rmutex, NULL);
+    pthread_mutex_init(&wmutex, NULL);
+    pthread_mutex_init(&z, NULL);
+
+    int nb_writer = atoi(argv[1]);
+    int nb_reader = atoi(argv[2]);
+
+    pthread_t writers[2];
+    pthread_t readers[2];
+
+    sem_init(&rsem, 0, 1);
+    sem_init(&wsem, 0, 1);
+
+    for (int i = 0 ; i < nb_writer ; i++){
+        pthread_create(&writers[i], NULL, writer, NULL);
+    }
+
+    for (int i = 0 ; i < nb_reader ; i++){
+        pthread_create(&readers[i], NULL, reader, NULL);
+    }
+
+    for (int i = 0 ; i < nb_writer ; i++){
+        pthread_join(writers[i], NULL);
+    }
+
+    for (int i = 0 ; i < nb_reader ; i++){
+        pthread_join(readers[i], NULL);
+    }
+    
+    return 0;
 }
