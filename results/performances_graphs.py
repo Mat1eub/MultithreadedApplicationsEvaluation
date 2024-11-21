@@ -4,12 +4,12 @@ import numpy as np
 
 
 
-data = pd.DataFrame(pd.read_csv("results/output.csv"))
+data = pd.DataFrame(pd.read_csv("output.csv"))
 #data = pd.DataFrame(pd.read_csv("performances_part1.csv"))
 
 
 probl = ["philo_graphs","prodcons_graphs","readwrite_graphs"]
-nom_probl = ["méthode des Philosophes", "méthode Producteur - Consomateur",  "méthode Reader - Writer"]
+nom_probl = ["Problème des philosophes", "Problème des producteurs - consomateurs",  "Problème des readers - writers"]
 n = len(probl)
 
 for i in range(n):
@@ -33,7 +33,7 @@ for i in range(n):
 
 
    plt.xlabel('Nombre de threads')
-   plt.ylabel('Temps en seconde')
+   plt.ylabel('Temps [s]')
    plt.ylim(0,data_probl['time'].max()*(1.05))
    plt.xticks(x)
 

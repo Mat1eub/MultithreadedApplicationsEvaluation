@@ -41,14 +41,12 @@ $(PRODCONS): $(OBJ)
 
 prodcons: $(PRODCONS)
 
-# Pour exécuter chaque exécutable après la compilation
-
-
 # Make the performances graphs
-
 $(PHILO2): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+
+# Facilitate each execution
 run:
 	./$(EXEC) $(ARG) $(ARG1) $(ARG2)
 
