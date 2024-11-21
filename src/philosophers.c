@@ -3,7 +3,7 @@
 #include "../headers/philosophers.h"
 
 #define COUNT 10e6       // Nombre de cycles penser/manger
-
+// For the philosphers N= nbr of philosphes but also nb of threads ?
 void* philosopher(void* param) {
     int i = *(int*)param;             
     int right = i;                   
