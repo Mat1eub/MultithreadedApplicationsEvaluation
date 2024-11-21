@@ -46,12 +46,14 @@ prodcons: $(PRODCONS)
 $(PHILO2): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+$(PRODCONS2): $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 # Facilitate each execution
 run:
 	./$(EXEC) $(ARG) $(ARG1) $(ARG2)
 
 clean:
-	rm -f $(OBJ) $(PHILO) $(PRODCONS) $(PHILO2)
+	rm -f $(OBJ) $(PHILO) $(PRODCONS) $(PHILO2) $(PRODCONS2)
 
 .PHONY: clean run philosophers all
