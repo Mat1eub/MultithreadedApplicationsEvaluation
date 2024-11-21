@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 
 
-data = pd.DataFrame(pd.read_csv("output.csv"))
+
+data = pd.DataFrame(pd.read_csv("results/output.csv"))
 #data = pd.DataFrame(pd.read_csv("performances_part1.csv"))
 
 
