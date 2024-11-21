@@ -22,10 +22,12 @@ sem_t cremplies;
 
 int main(int argc, char* argv[]) {
     
+    const char* problem = argv[0];
+
     /*************************/
     /* Philosophers' problem */
     /*************************/
-    if (strcmp(argv[0],"./philosophers_exec")==0){
+    if (strcmp(problem,"./philosophers_exec")==0 || strcmp(problem,"./philo_graphs")==0){
         if (argc != 2) {
             fprintf(stderr, "Usage: %s N=<number_of_philosophers>\n", argv[0]);
             return 1;
@@ -75,7 +77,8 @@ int main(int argc, char* argv[]) {
     /**********************************/
     /* Producer - Consummer's problem */
     /**********************************/
-    if(strcmp(argv[0],"./producerconsummer_exec")==0){
+    if(strcmp(problem,"./producerconsummer_exec")==0 || strcmp(problem,"./prodcons_graphs")==0){
+
         // Get P&C from commande line
         if(argc == 2){
             // Single argument : we split the threads
@@ -85,7 +88,8 @@ int main(int argc, char* argv[]) {
                 return 1;
             }
             if(totalThreads%2==0){
-                P, C = totalThreads/2;
+                P = totalThreads/2;
+                C = totalThreads/2;
             }else{
                 P = (totalThreads+1)/2;
                 C = (totalThreads)/2;
@@ -102,13 +106,16 @@ int main(int argc, char* argv[]) {
                 fprintf(stderr, "Invalid number of consummers.\n");
                 return 1;
             }else{
-            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n Or:\n %s <total_number_to_dispatch>",argv[0], argv[0]);
+            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n Or:\n %s <total_number_to_dispatch>\n",argv[0], argv[0]);
             return 1;
+            }
         }
+
         // Initialization
         pthread_t producers[P];     // Threads for each producers
+        int thread_id[P];
         pthread_t consummers[C];    // Threads for each consummers
-        
+
         pthread_mutex_init(&mutex_prodcons, NULL);
         sem_init(&cvides,0,BUFFER_SIZE);
         sem_init(&cremplies,0,0);
@@ -116,7 +123,8 @@ int main(int argc, char* argv[]) {
         // Starting threads' work
         for (size_t i = 0; i < P; i++)
         {
-            pthread_create(&producers[i], NULL,producer,(void*)producers[i]);
+            thread_id[i]=i;
+            pthread_create(&producers[i], NULL,producer,(void*)(&(thread_id[i])));
         }
 
         for (size_t i = 0; i < C; i++)
