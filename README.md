@@ -25,7 +25,7 @@ We then have a makefile to compile and facilitate your navigation
 | `make clean`                 | Clean all the object and compiled files                                                  |                             |
 |                                |                                                                                          |                             |
 
-We decided to make a single main file and compile everything from this main. 
+We decided to make a single main file and compile everything from this main.
 
 ## Problème des philosophes
 
@@ -81,4 +81,3 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 * [ ] Finish how to execute
 * [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
 * [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers
-=======
