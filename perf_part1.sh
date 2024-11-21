@@ -16,9 +16,8 @@ for prob in "${programs[@]}"; do
     # Loop through thread configurations
     for t in "${threads[@]}"; do
         for _ in {1..5}; do
-            exec_time=$(/usr/bin/time -f "%e" ./$prob $t 2>&1 > /dev/null)
+            exec_time=$(/usr/bin/time -f "%e" ./$prob $t 2>&1 > /dev/null )
             echo "$prob,$t,$exec_time" >> $output
         done
-        
     done
 done
