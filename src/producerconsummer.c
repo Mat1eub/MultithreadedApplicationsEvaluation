@@ -7,7 +7,7 @@
 // Detailed explaination in the README's Producters-Consummers section
 
 // Initial variables
-#define N 8
+#define N 8 // To change and put in extern ? (we use it to initiate semaphore in main)
 #define NB_ITEMS 131072
 int buff[N];
 int* buffer = buff;
@@ -29,6 +29,7 @@ void* producer(void* arg){
         if (prodcount>=NB_ITEMS)
         {
             pthread_mutex_unlock(&mutex_prodcons);
+            sem_post(&cremplies); // Point d'explication sur ça ?? Il faut y réfléchir et expliquer en une ligne ici et dans le readme que ca nous a posé probleme
             break;
         }
         
@@ -36,7 +37,7 @@ void* producer(void* arg){
         prodcount++; 
         buffer[ip] = *id;
         ip = (ip+1)%N;
-        // Debugging : printf("Producer %d: prodcount=%d, ip=%d\n", *id, prodcount, ip);
+        printf("Producer %d: prodcount=%d, ip=%d\n", *id, prodcount, ip);
 
         pthread_mutex_unlock(&mutex_prodcons);
         process();
@@ -51,9 +52,12 @@ void* consummer(void* arg){
     while(1){
         sem_wait(&cremplies);
         pthread_mutex_lock(&mutex_prodcons);
-        if (consumcount>=NB_ITEMS && prodcount >= NB_ITEMS) // If nb of producted and consummed items>NB_ITEMS we stop
+
+        // Break condition : All products are consummed
+        if (consumcount>=NB_ITEMS)
         {
             pthread_mutex_unlock(&mutex_prodcons);
+            sem_post(&cvides); //j'avais oublié ca_
             break;
         }
         
@@ -61,12 +65,11 @@ void* consummer(void* arg){
         consumcount++;
         int element = buffer[ic];
         ic = (ic+1)%N;
-        // Debugging : printf("Consumer: consumcount=%d, element=%d\n", consumcount, element);
+        printf("Consumer: consumcount=%d, element=%d\n", consumcount, element);
 
         pthread_mutex_unlock(&mutex_prodcons);
         process();
         sem_post(&cvides);
-        
     }
     return NULL;
 }
