@@ -4,8 +4,8 @@ import numpy as np
 
 
 
-data = pd.DataFrame(pd.read_csv("output.csv"))
-#data = pd.DataFrame(pd.read_csv("performances_part1.csv"))
+#data = pd.DataFrame(pd.read_csv("output.csv"))
+data = pd.DataFrame(pd.read_csv("performances_part1.csv"))
 
 
 probl = ["philo_graphs","prodcons_graphs","readwrite_graphs"]
@@ -16,7 +16,7 @@ for i in range(n):
 
    data_probl = data[data["problem"] == probl[i]]
    plt.figure(i)
-   #plt.subplot(n,1,i+1)
+   #plt.subplot(n,1,i+1)s
    plt.title(nom_probl[i])
 
    x = data_probl['nb_of_threads'].unique()
