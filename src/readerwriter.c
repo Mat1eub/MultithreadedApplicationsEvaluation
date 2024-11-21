@@ -1,5 +1,6 @@
 #include <pthread.h>
 
+// github que un tuteur a donner pour voir comment sa marcher (resolution)
 // https://gist.github.com/megaaa13/9fad5070cf79139a0be9b8c9a263fe5d
 
 int rcount = 0;
@@ -39,7 +40,8 @@ void* reader(){
         pthread_mutex_unlock(&z);
 
 
-        read_database();
+        //read_database();
+        data();
 
 
         // section critique
@@ -67,6 +69,7 @@ void* writer(){
 
         sem_wait(&wsem);
 
+        //write_database();
         data();
 
         sem_post(&wsem);
@@ -92,27 +95,21 @@ int main(int argc, char const *argv[]){
     int nb_writer = atoi(argv[1]);
     int nb_reader = atoi(argv[2]);
 
-    pthread_t writers[2];
-    pthread_t readers[2];
+    pthread_t writers[nb_writer];
+    pthread_t readers[nb_reader];
 
+    // partie a reflechir
     sem_init(&rsem, 0, 1);
     sem_init(&wsem, 0, 1);
+    // partie a reflechir
 
-    for (int i = 0 ; i < nb_writer ; i++){
-        pthread_create(&writers[i], NULL, writer, NULL);
-    }
 
-    for (int i = 0 ; i < nb_reader ; i++){
-        pthread_create(&readers[i], NULL, reader, NULL);
-    }
+    for (int i = 0 ; i < nb_writer ; i++) pthread_create(&writers[i], NULL, writer, NULL);
+    for (int i = 0 ; i < nb_reader ; i++) pthread_create(&readers[i], NULL, reader, NULL);
 
-    for (int i = 0 ; i < nb_writer ; i++){
-        pthread_join(writers[i], NULL);
-    }
-
-    for (int i = 0 ; i < nb_reader ; i++){
-        pthread_join(readers[i], NULL);
-    }
+    for (int i = 0 ; i < nb_writer ; i++) pthread_join(writers[i], NULL);
+    for (int i = 0 ; i < nb_reader ; i++) pthread_join(readers[i], NULL);
+    
     
     return 0;
 }
