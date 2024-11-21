@@ -1,27 +1,31 @@
 # Multithreaded Applications Evaluation
 
-The main goal of this project is to analyze the overall impact of threads and POSIX's syncronizations (e.g. mutex and semaphores for the first part of the project then active waiting locks in the second part)
-
-Ce projet a pour but d'analyser l'impact des threads et des primitives de synchronisation POSIX (mutex et sémaphores dans un premier temps, ainsi qu'avec des verrous avec attente active dans un second temps).
+The main goal of this project is to analyze the overall impact of threads and POSIX's syncronizations. The project was articulated in 2 phases, we first coded 3 famous problems related to synchronization with classic mutex and semaphore and analyse their performance. Then for the second phase, we implemented polling on those problems. All this is going to be descripted in details with our reasonment behind every issues we faced.
 
 ## How to use this project
 
-The root folder contains :
+This section is here to explain how to run the project.
+
+### Folders
 
 * `headers` folder, contains the fonctions' signatures and their documentation (make sure to enable IntelliSense to get function documentation on hover)
 * `results` folder which contains graphs for the evaluation of performance
 * `scripts` folder will contains the python scripts to make graphs and calculation of the evaluation
 * `src` folder is where we put all our code, every task is separated in a single file with the name of the problem and the main file centralizes all the functions and is responsible for launching the threads for each problem.
 
-Then we have the Makefile to execute everything :
+### Makefile
 
-| Command                     | What does it really do                                                                                                 | Default parameters |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `make philosophers N=...` | Compile and execute the philosophers' problem with N philosphers (we may consider running test with this command too) | N=5                |
-| `make producercons`ummer  |                                                                                                                        |                    |
-|                             |                                                                                                                        |                    |
-| `make clean`              |                                                                                                                        |                    |
-|                             |                                                                                                                        |                    |
+We then have a makefile to compile and facilitate your navigation
+
+| Command                        | What does it really do                                                                   | Default value of parameters |
+| ------------------------------ | ---------------------------------------------------------------------------------------- | --------------------------- |
+| `make philosophers N=...`    | Compile and execute of the philosophers' problem  with N philosphers                    | N=5                         |
+| `make prodcons P=... C=...`  | Compile and execute the producers-consummers' problem with P producers and C consummers | P=5, C=5                    |
+| `make readwrite R=... W=...` | Compile and execute the readers-writers' problem with R readers and W writers            | R=5, W=5                    |
+| `make clean`                 | Clean all the object and compiled files                                                  |                             |
+|                                |                                                                                          |                             |
+
+We decided to make a single main file and compile everything from this main. 
 
 ## Problème des philosophes
 
@@ -44,25 +48,40 @@ Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 f
 ## Problème des producteurs-consommateurs
 
 
+
+// On met l'incrémentation dans le même mutex_prodcons,
+
+// une idée de faire autrement c'est de rajouter un mutex_prodcons pour incrémenter cette variable
+
+// (un thread incrémentera en même temps qu'un autre produira ca peut etre pas mal)
+
+// Parler dans le readme ou initialement que j'avais d'abord penser faire un while(1) if prodcount<10 : do else : break
+
+// sans penser qu'en fait plusieurs threads vont verifier cette condition et acceder au bloc dans le if et donc ca va produire
+
+// + que le seuil
+
 ## Problème des lecteurs-écrivains
 
 Le problème peut être grossièrement résumé par la situation suivante : Il y a 2 types de processus : les lecteurs qui lisent uniquement l'information et peuvent simultanément avoir accès à la section critique sans problème. Les écrivains qui écrivent/modifient l'information et s'y voient imposer une exclusion mutuelle stricte.
 
-Qui pourrait-on retrouver avec l'accès à la section critique : 
+Qui pourrait-on retrouver avec l'accès à la section critique :
+
 - plusieurs lecteurs avec 0 écrivains,
 - 0 lecteur avec 1 seul écrivain.
-  
+
 Lorsqu'un écrivain modifie la structure de données, gardons en tête que cette dernière n'est pas accessible à un lecteur car ceci entraverait la concurrence et ne donnerait pas un bon résulat.
 
-On veut donc un accès **partagé** en lecture et un accès **exclusif** en écriture, une première esquisse de solution apparaît : 
-- il faut que le premier lecteur gagne l'accès avec un sémaphore pour que les prochains lecteurs puissent accéder à la structure de donnée tant qu'il reste au moins un lecteur. Il faut donc garder une trace du nombre de lecteur en jeu,
+On veut donc un accès **partagé** en lecture et un accès **exclusif** en écriture, une première esquisse de solution apparaît :
+
+- il faut que le premier lecteur gagne l'accès avec un sémaphore pour que les prochains lecteurs puissent accéder à la structure de donnée tant qu'il reste au moins un lecteur. Il faut donc aussi garder une trace du nombre de lecteur en jeu,
 - chaque rédacteur doit gagner l'accès avec un sémaphore.
 
 # TO DO
 
 * [ ] Maybe too much, but a simulation of philosophers problem ?
-* [ ] Translate to english / Or maybe not ? c'est plus sympa à lire en français
+* [ ] Translate to english, pour l'intro et comment exécuter mais le reste c'est plus sympa à lire en français
 * [ ] Illustrations for problems
 * [ ] Finish how to execute
 * [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
-* [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers 
+* [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers
