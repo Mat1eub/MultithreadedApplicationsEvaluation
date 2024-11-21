@@ -1,0 +1,6 @@
+problem,nb_of_threads,time
+philo_graphs,2,2.60
+philo_graphs,4,1.46
+philo_graphs,8,3.03
+philo_graphs,16,5.98
+philo_graphs,32,7.11
