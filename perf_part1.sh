@@ -4,10 +4,7 @@ programs=("philo_graphs" "prodcons_graphs" "readwrite_graphs")
 threads=(2 4 8 16 32)
 output="results/performances_part1.csv"
 
-
-
-# Add header to the CSV file
-echo "problem,nb_of_threads,time" > $output
+echo "problem,nb_of_threads,time" > $output # Headers of columns
 
 for prob in "${programs[@]}"; do
     # Ensure the program is compiled
@@ -18,7 +15,10 @@ for prob in "${programs[@]}"; do
 
     # Loop through thread configurations
     for t in "${threads[@]}"; do
-        exec_time=$(/usr/bin/time -f "%e" ./$prob $t 2>&1 > /dev/null)
-        echo "$prob,$t,$exec_time" >> $output
+        for _ in {1..5}; do
+            exec_time=$(/usr/bin/time -f "%e" ./$prob $t 2>&1 > /dev/null)
+            echo "$prob,$t,$exec_time" >> $output
+        done
+        
     done
 done

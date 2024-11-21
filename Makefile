@@ -2,8 +2,6 @@
 # Variables
 CC = gcc
 CFLAGS = -Wall -pthread
-PHILO = philosophers_exec
-PRODCONS = producerconsummer_exec
 SRC_DIR = src
 OBJ_DIR = objects
 SRC = $(wildcard $(SRC_DIR)/*.c)  # Trouve tous les fichiers .c dans src
@@ -11,6 +9,9 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)  # Crée les fichiers .o dans objects
 
 PHILO = philosophers_exec
 PHILO2 = philo_graphs
+
+PRODCONS = producerconsummer_exec
+PRODCONS2 = prodcons_graphs
 
 # Valeur par défaut des variables
 N ?= 5

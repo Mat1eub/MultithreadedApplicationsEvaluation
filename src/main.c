@@ -70,29 +70,41 @@ int main(int argc, char* argv[]) {
         }
 
         free(forks);
-    }
+    } // End of philo's problem
+
     /**********************************/
     /* Producer - Consummer's problem */
     /**********************************/
     if(strcmp(argv[0],"./producerconsummer_exec")==0){
-        if (argc != 3) {
-            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n", argv[0]);
-            return 1;
-        }
+        // Get P&C from commande line
+        if(argc == 2){
+            // Single argument : we split the threads
+            int totalThreads = atoi(argv[1]);
+            if (totalThreads <= 0) {
+                fprintf(stderr, "Invalid total number of threads: %d\n", totalThreads);
+                return 1;
+            }
+            if(totalThreads%2==0){
+                P, C = totalThreads/2;
+            }else{
+                P = (totalThreads+1)/2;
+                C = (totalThreads)/2;
+            }
+        }else if(argc ==3){
+            P = atoi(argv[1]);
+            if (P <= 0) {
+                fprintf(stderr, "Invalid number of producers.\n");
+                return 1;
+            }
 
-        // Get A&B from commande line
-        P = atoi(argv[1]);
-        if (P <= 0) {
-            fprintf(stderr, "Invalid number of producers.\n");
+            C = atoi(argv[2]);
+            if (C <= 0) {
+                fprintf(stderr, "Invalid number of consummers.\n");
+                return 1;
+            }else{
+            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n Or:\n %s <total_number_to_dispatch>",argv[0], argv[0]);
             return 1;
         }
-
-        C = atoi(argv[2]);
-        if (C <= 0) {
-            fprintf(stderr, "Invalid number of consummers.\n");
-            return 1;
-        }
-        
         // Initialization
         pthread_t producers[P];     // Threads for each producers
         pthread_t consummers[C];    // Threads for each consummers
@@ -123,6 +135,12 @@ int main(int argc, char* argv[]) {
         pthread_mutex_destroy(&mutex_prodcons);
         sem_destroy(&cvides);
         sem_destroy(&cremplies);
-    }
+    } // End of prodcons' problem
+
+    /******************************/
+    /* Readers - writers' problem */
+    /******************************/
+
+    
     return 0;
 }
