@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
 {
     char const* problem = argv[0];
     
-    if (strcmp(problem,"./philosophers_exec")==0 || strcmp(problem,"./philo_graphs")==0){
+    if (strcmp(problem,"./philosophers_exec")==0 || strcmp(problem,"./philo")==0){
         if (argc != 2) {
             fprintf(stderr, "Usage: %s N=<number_of_philosophers>\n", argv[0]);
             return 1;

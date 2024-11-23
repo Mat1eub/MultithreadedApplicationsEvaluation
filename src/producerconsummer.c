@@ -2,6 +2,8 @@
 #include <semaphore.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
 #define BUFFER_SIZE 8
 // Detailed explaination in the README's Producters-Consummers section
 
@@ -93,7 +95,7 @@ int main(int argc, char const *argv[])
     }
     
     // make prodcons <total_number_of_threads>
-    if(strcmp(executable,"./prodcons_graphs")==0){
+    if(strcmp(executable,"./prodcons")==0){
         if (argc != 2){
             fprintf(stderr, "Usage: %s <total_number_of_threads>\n",argv[0]);
             return 1;
