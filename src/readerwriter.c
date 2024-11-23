@@ -1,5 +1,5 @@
 #include <pthread.h>
-
+#include <semaphore.h>
 // github que un tuteur a donner pour voir comment sa marcher (resolution)
 // https://gist.github.com/megaaa13/9fad5070cf79139a0be9b8c9a263fe5d
 
