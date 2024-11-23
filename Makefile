@@ -1,4 +1,3 @@
-.SILENT:
 # Variables
 CC = gcc
 CFLAGS = -Wall -pthread
@@ -8,10 +7,10 @@ SRC = $(wildcard $(SRC_DIR)/*.c)  # Trouve tous les fichiers .c dans src
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)  # Crée les fichiers .o dans objects
 
 PHILO = philosophers_exec
-PHILO2 = philo_graphs
+PHILO2 = philo
 
 PRODCONS = producerconsummer_exec
-PRODCONS2 = prodcons_graphs
+PRODCONS2 = prodcons
 
 # Valeur par défaut des variables
 N ?= 5
@@ -19,35 +18,35 @@ P ?= 5
 C ?= 5
 
 # Pour l'instant philo, encore à décider d'un truc plus général
-all: $(PHILO)
+all: $(PHILO) $(PRODCONS)
 
 
-# .c dans src => .o dans objects
+# Compile les .c dans src et met le resultat ().o) dans objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $< $(CFLAGS) -o $@
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 
 # =========== PHILOSOPHERS ===========
-$(PHILO): $(OBJ)
+$(PHILO): $(OBJ_DIR)/philosophers.o
 	$(CC) -o $@ $^ $(CFLAGS)
 	$(MAKE) run EXEC=$(PHILO) ARG=$(N)
+
+$(PHILO2): $(OBJ_DIR)/philosophers.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
 philosophers: $(PHILO)
 	make clean
 
 # =========== PRODUCERS & CONSUMMERS ============
-$(PRODCONS): $(OBJ)
+$(PRODCONS): $(OBJ_DIR)/producerconsummer.o
 	$(CC) -o $@ $^ $(CFLAGS)
 	$(MAKE) run EXEC=$(PRODCONS) ARG1=$(P) ARG2=$(C)
 
+$(PRODCONS2): $(OBJ_DIR)/producerconsummer.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 prodcons: $(PRODCONS)
 
-# Make the performances graphs
-$(PHILO2): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
-
-$(PRODCONS2): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
 
 # Facilitate each execution
 run:
