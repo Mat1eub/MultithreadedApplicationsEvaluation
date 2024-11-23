@@ -45,7 +45,7 @@ $(PRODCONS): $(OBJ_DIR)/producerconsummer.o
 $(PRODCONS2): $(OBJ_DIR)/producerconsummer.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-prodcons: $(PRODCONS)
+producerconsummer: $(PRODCONS)
 
 
 # Facilitate each execution
