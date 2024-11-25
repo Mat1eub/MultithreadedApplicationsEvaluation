@@ -25,7 +25,7 @@ We then have a makefile to compile and facilitate your navigation
 | `make clean`                 | Clean all the object and compiled files                                                  |                             |
 |                                |                                                                                          |                             |
 
-We decided to make a single main file and compile everything from this main.
+We will now look in detail at all the problems and our reflexion behind our code. As this is not a substantial part of understanding the result of our work, we shall continue in French to make it easier to read and write. We will then switch back to English for the performance evaluation of the whole project and the conclusion.
 
 ## Problème des philosophes
 
@@ -73,6 +73,24 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 - il faut que le premier lecteur gagne l'accès avec un sémaphore pour que les prochains lecteurs puissent accéder à la structure de donnée tant qu'il reste au moins un lecteur. Il faut donc aussi garder une trace du nombre de lecteur en jeu,
 - chaque rédacteur doit gagner l'accès avec un sémaphore.
 
+## Les différents types de verrous
+
+### POSIX locks
+
+#### Performance des primitives POSIX sur ces problèmes de synchronisation
+
+### Test-And-Set (TAS) lock
+
+On remarque que toutes ces requêtes d'invaldiation du cache etc font rapidement baisser la performance du verrous. 
+GRAPHE DE PERFORMANCE TAS
+
+### Test and Test-And-Set (TTAS) lock
+
+#### Comparaison des performances
+
+## Conclusion 
+
+Let's conclude in english 
 # TO DO
 
 * [ ] Maybe too much, but a simulation of philosophers problem ?
