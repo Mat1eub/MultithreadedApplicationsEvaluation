@@ -7,6 +7,10 @@
 
 int nb_thread;
 
+int sem = 0;  
+
+int counter = 0;  
+
 // simulation de tarvail
 void data() {
     for (int i = 0; i < 10000; i++);
@@ -17,14 +21,12 @@ void data() {
 void* testandset() {
     for (int i = 0; i < 32768/nb_thread; i++) {
         lock(&sem);
-        counter++;   // Section critique
+        counter++;   // Section critique / verification que ca marche
         unlock(&sem);
     }
 }
 
 int main(int argc, char* argv[]) {
-    
-    
     
     nb_thread = atoi(argv[1]);
 
