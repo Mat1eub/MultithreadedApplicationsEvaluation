@@ -1,29 +1,27 @@
-#include <semaphore.h>
-#include <stdio.h>
 #include <pthread.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <unistd.h>
 
-void lock(int* verou) {
-    __asm__(
-        //"lock: \n\t"
-        //".long 0 \n\t"
-        "enter:\n\t"
-        "movl $1, %eax\n\t"
-        "xchgl %eax, %0\n\t"
-        "testl %eax, %eax\n\t" 
-        "jnz enter"   
-        : "+m"(*verou)
-        :
-    );
+volatile int sem = 0;  
+int counter = 0;       
 
+void lock(volatile int* verou) {
+    int etat = 1;
+    while (etat){
+        __asm__(
+            "xchgl %1, %0\n\t"                       
+            : "+m"(*verou), "+r"(etat)              
+            :
+        );
+    }
 }
 
-void unlock(int* verou) {
-    __asm__(
-            "movl $1, %eax\n\t"
-            "xchg %eax,%0\n\t"
-            : "+m"(*verou)
-            : 
-            );
+void unlock(volatile int* verou) {
+    int etat = 0;
+    __asm__( 
+        "xchgl %1, %0\n\t"       
+        : "+m"(*verou), "+r"(etat)           
+        :                     
+    );
 }
