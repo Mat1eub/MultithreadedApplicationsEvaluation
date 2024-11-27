@@ -18,8 +18,8 @@ void data() {
 
 void* testandset() {
     for (int i = 0; i < 32768/nb_thread; i++) {
-        data();
         lock(&sem);
+        data();
         counter++;   // Section critique / verification que ca marche
         unlock(&sem);
     }
