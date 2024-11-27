@@ -5,13 +5,15 @@
 
 void lock(int* verou) {
     int etat = 1;
-    while (etat){
-        __asm__(
-            "xchgl %1, %0\n\t"                       
-            : "+m"(*verou), "+r"(etat)              
-            :
-        );
-    }
+    __asm__(
+        "enter:\n\t"
+        "xchgl %1, %0\n\t"
+        "testl %1, %1\n\t" 
+        "jnz enter"                         
+        : "+m"(*verou), "+r"(etat)              
+        :
+    );
+
 }
 
 void unlock(int* verou) {
