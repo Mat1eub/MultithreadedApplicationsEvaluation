@@ -1,10 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-
-volatile int sem = 0;  
-int counter = 0;       
+#include <unistd.h>     
 
 void lock(volatile int* verou) {
     int etat = 1;
