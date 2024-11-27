@@ -5,21 +5,25 @@
 #include <string.h>
 
 void lock(int* verou) {
-    int etat = 1; 
-    while (etat == 1) {
-        __asm__(
-            "xchg %0, %1\n\t"   
-            : "+m"(*verou), "+r"(etat) 
-            :
-        );
-    }
+    __asm__(
+        //"lock: \n\t"
+        //".long 0 \n\t"
+        "enter:\n\t"
+        "movl $1, %eax\n\t"
+        "xchgl %eax, %0\n\t"
+        "testl %eax, %eax\n\t" 
+        "jnz enter"   
+        : "+m"(*verou)
+        :
+    );
+
 }
 
 void unlock(int* verou) {
-    int etat = 1; 
     __asm__(
-            "xchg $0,%0\n\t"
-            : "+m"(*verou), "+r"(etat)
+            "movl $1, %eax\n\t"
+            "xchg %eax,%0\n\t"
+            : "+m"(*verou)
             : 
             );
 }
