@@ -5,7 +5,7 @@
 
 void lock(int* verou) {
     int etat = 1;
-    __asm__(
+    asm(
         "enter:\n\t"
         "xchgl %1, %0\n\t"
         "testl %1, %1\n\t" 
@@ -18,7 +18,7 @@ void lock(int* verou) {
 
 void unlock(int* verou) {
     int etat = 0;
-    __asm__( 
+    asm( 
         "xchgl %1, %0\n\t"       
         : "+m"(*verou), "+r"(etat)           
         :                     
