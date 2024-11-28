@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "../headers/spinlock.h"
 
-// Fonction init il faut malloc
 int spinlock_init(spinlock_t** lk){
     *lk = malloc(sizeof(spinlock_t));
     if(*lk==NULL){
@@ -12,7 +11,6 @@ int spinlock_init(spinlock_t** lk){
     return 0; // Success
 }
 
-// Fonction destroy il faut free
 int spinlock_free(spinlock_t* lk){
     if(lk == NULL){
         return 1; // Nothing to free
