@@ -1,101 +1,51 @@
 problem,nb_of_threads,time
-philo,2,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.10
-philo,2,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.06
-philo,2,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.08
-philo,2,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.06
-philo,2,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.07
-philo,4,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.06
-philo,4,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.07
-philo,4,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.09
-philo,4,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.07
-philo,4,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.10
-philo,8,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.08
-philo,8,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.11
-philo,8,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.13
-philo,8,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.13
-philo,8,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.08
-philo,16,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.16
-philo,16,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.22
-philo,16,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.19
-philo,16,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.21
-philo,16,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.18
-philo,32,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.28
-philo,32,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.21
-philo,32,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.27
-philo,32,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.24
-philo,32,Fatal glibc error: pthread_mutex_lock.c:94 (___pthread_mutex_lock): assertion failed: mutex->__data.__owner == 0
-Command terminated by signal 6
-0.20
-prodcons,2,3.07
-prodcons,2,3.00
-prodcons,2,3.02
-prodcons,2,2.99
-prodcons,2,2.99
-prodcons,4,1.55
-prodcons,4,1.54
-prodcons,4,1.56
-prodcons,4,1.55
-prodcons,4,1.53
-prodcons,8,1.09
-prodcons,8,1.08
-prodcons,8,1.05
-prodcons,8,1.05
-prodcons,8,1.07
-prodcons,16,1.12
-prodcons,16,1.11
-prodcons,16,1.12
-prodcons,16,1.15
-prodcons,16,1.17
-prodcons,32,1.14
-prodcons,32,1.17
-prodcons,32,1.14
-prodcons,32,1.15
-prodcons,32,1.13
+philo,2,0.300
+philo,2,0.050
+philo,2,0.060
+philo,2,0.050
+philo,2,0.060
+philo,4,0.140
+philo,4,0.140
+philo,4,0.150
+philo,4,0.140
+philo,4,0.150
+philo,8,0.290
+philo,8,0.300
+philo,8,0.290
+philo,8,0.330
+philo,8,0.300
+philo,16,0.590
+philo,16,0.590
+philo,16,0.590
+philo,16,0.590
+philo,16,0.580
+philo,32,1.170
+philo,32,1.180
+philo,32,1.180
+philo,32,1.260
+philo,32,1.180
+prodcons,2,2.370
+prodcons,2,2.150
+prodcons,2,2.210
+prodcons,2,2.190
+prodcons,2,2.160
+prodcons,4,1.910
+prodcons,4,2.260
+prodcons,4,2.610
+prodcons,4,1.770
+prodcons,4,1.760
+prodcons,8,1.170
+prodcons,8,1.390
+prodcons,8,1.140
+prodcons,8,1.280
+prodcons,8,1.480
+prodcons,16,1.290
+prodcons,16,1.330
+prodcons,16,1.220
+prodcons,16,1.170
+prodcons,16,1.130
+prodcons,32,1.090
+prodcons,32,1.080
+prodcons,32,1.220
+prodcons,32,1.130
+prodcons,32,1.140

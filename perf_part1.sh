@@ -1,4 +1,5 @@
 #!/bin/bash
+export LC_NUMERIC="C"
 
 programs=("philo" "prodcons" "readwrite_graphs")
 threads=(2 4 8 16 32)
@@ -16,7 +17,8 @@ for prob in "${programs[@]}"; do
     # Loop through thread configurations
     for t in "${threads[@]}"; do
         for _ in {1..5}; do
-            exec_time=$(/usr/bin/time -f "%e" ./$prob $t 2>&1 > /dev/null )
+            exec_time=$(/usr/bin/time -p ./$prob $t 2>&1 | grep real | awk '{print $2}')
+            printf -v exec_time "%.3f" "$exec_time"
             echo "$prob,$t,$exec_time" >> $output
         done
     done
