@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+//init
 int intitsem(int** sem){
-    *sem = malloc(sizeof(int));  // Allouer de la mémoire pour un int, pas pour un int*
+    *sem = malloc(sizeof(int));  
     if (!*sem) {
         perror("malloc");
         return 1;
@@ -12,10 +13,12 @@ int intitsem(int** sem){
     return 0;
 }
 
+//destroy
 void destroysem(int* verou){
     free(verou);
 }
 
+//semwait
 void lock(int* verou) {
     int etat = 1;
     
@@ -29,6 +32,8 @@ void lock(int* verou) {
     );
 }
 
+
+//sem post
 void unlock(int* verou) {
     int etat = 0;
     __asm__( 
