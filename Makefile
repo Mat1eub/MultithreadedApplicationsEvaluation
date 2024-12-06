@@ -34,6 +34,12 @@ $(PHILO): $(OBJ_DIR)/philosophers.o
 $(PHILO2): $(OBJ_DIR)/philosophers.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
+philo_tas : $(OBJ_DIR)/philosophers_with_sem_TS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+philo_tts : $(OBJ_DIR)/philosophers_with_sem_TTS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 philosophers: $(PHILO)
 	make clean
 
