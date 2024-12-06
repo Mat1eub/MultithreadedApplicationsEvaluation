@@ -1,13 +1,13 @@
-#include <semaphore.h>
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
+#include "fctsemaphore_TS.c"
 
 int N;
-sem_t* forks;
+Semaphore* forks;
 #define COUNT 1e6       // Nombre de cycles penser/manger
-// For the philosphers N= nbr of philosphes but also nb of threads ?
+
 void* philosopher(void* param) {
     int i = *(int*)param;             
     int right = i;                   
@@ -19,18 +19,18 @@ void* philosopher(void* param) {
         // On ne fait rien car penser est instantané
 
         if (i == N - 1) {            // Dernier philosophe prend les fourchettes dans un ordre inversé pour éviter un deadlock
-            sem_wait(&forks[right]);
-            sem_wait(&forks[left]);
+            locksem(&forks[right]);
+            locksem(&forks[left]);
         } else {
-            sem_wait(&forks[left]);
-            sem_wait(&forks[right]);
+            locksem(&forks[left]);
+            locksem(&forks[right]);
         }
 
         // Philosophe mange (section critique)
         // Ici aussi, on ne fait rien car manger est instantané.
 
-        sem_post(&forks[left]);    // Le philosophe libère les fourchettes
-        sem_post(&forks[right]);
+        unlocksem(&forks[left]);    // Le philosophe libère les fourchettes
+        unlocksem(&forks[right]);
     }
 
     return NULL;
@@ -54,7 +54,7 @@ int main(int argc, char const *argv[])
     }
 
     // Allocate dynamically the semaphore array of forks
-    forks = malloc(N*sizeof(sem_t));
+    forks = malloc(N*sizeof(Semaphore));
 
     if (!forks) {
         perror("malloc");
@@ -62,7 +62,7 @@ int main(int argc, char const *argv[])
     }
 
     for (int i = 0; i < N; i++) {
-        sem_init(&forks[i], 0, 1);
+        initsem(&forks[i], 1);
     }
 
     // Threads for each philosopher
@@ -80,11 +80,8 @@ int main(int argc, char const *argv[])
         pthread_join(philosophers[i], NULL);
     }
 
-    for (int i = 0; i < N; i++) {
-        sem_destroy(&forks[i]);
-    }
-
     free(forks);
 
     return 0;
 }
+

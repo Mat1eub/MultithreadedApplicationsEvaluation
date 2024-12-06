@@ -5,15 +5,14 @@
 
 
 int nb_thread;
-
 int sem = 0;  
-
-int counter = 0;  
+int counter = 0;       
 
 
 void lock(int* verou) {
     int etat = 1;
-    asm(
+    
+    __asm__(
         "enter:\n\t"
         "xchgl %1, %0\n\t"
         "testl %1, %1\n\t" 
@@ -25,18 +24,20 @@ void lock(int* verou) {
 }
 
 void unlock(int* verou) {
-    asm( 
-        "movl $0, %0\n\t"       
-        : "+m"(*verou)        
+    int etat = 0;
+    __asm__( 
+        "xchgl %1, %0\n\t"       
+        : "+m"(*verou), "+r"(etat)           
         :                     
     );
 }
-
 
 // simulation de tarvail
 void data() {
     for (int i = 0; i < 10000; i++);
 }
+
+
 
 void* testandset() {
     for (int i = 0; i < 32768/nb_thread; i++) {

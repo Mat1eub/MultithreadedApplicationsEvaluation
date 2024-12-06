@@ -85,14 +85,14 @@ int main(int argc, char const *argv[])
     const char* executable = argv[0];
 
     // make producersconsummers P=<number_of_producers> C=<number_of_consummers>
-    if(strcmp(executable,"./producerconsummer_exec")==0){
-        if(argc != 3){
-            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n",argv[0]);
-        }
-        // Get P&C from commande line
-        P = atoi(argv[1]);
-        C = atoi(argv[2]);
+    
+    if(argc != 3){
+        fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n",argv[0]);
     }
+    // Get P&C from commande line
+    P = atoi(argv[1]);
+    C = atoi(argv[2]);
+
     
     // make prodcons <total_number_of_threads>
     if(strcmp(executable,"./prodcons")==0){
