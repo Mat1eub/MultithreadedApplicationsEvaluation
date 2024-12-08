@@ -15,7 +15,6 @@ TS = src/test-and-set
 TTS = src/test-and-test-and-set
 
 OUTPUT = results/output.csv
-TOT := 0
 all: 
 	make init
 	gcc -pthread $(PH).c -o $(PH).o
