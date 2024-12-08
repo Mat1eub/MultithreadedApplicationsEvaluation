@@ -49,16 +49,6 @@ make graf: to plot all result that is locate in output.csv
 
 make clean : remove all the file .o
 
-| Command                        | What does it really do                                                                   | Default value of parameters |
-| ------------------------------ | ---------------------------------------------------------------------------------------- | --------------------------- |
-| `make philosophers N=...`    | Compile and execute of the philosophers' problem  with N philosphers                    | N=5                         |
-| `make prodcons P=... C=...`  | Compile and execute the producers-consummers' problem with P producers and C consummers | P=5, C=5                    |
-| `make readwrite R=... W=...` | Compile and execute the readers-writers' problem with R readers and W writers            | R=5, W=5                    |
-| `make clean`                 | Clean all the object and compiled files                                                  |                             |
-|                                |                                                                                          |                             |
-
-We decided to make a single main file and compile everything from this main.
-
 ## Problème des philosophes
 
 Le problème du philosophe met en lumière les difficultés de synchronisation liées à la programmation en parallèle. Pour résumé, on a N (e.g. 5) philosophes autour d'une table. Ils peuvent soit penser, soit manger. Mais pour manger, il faut 2 fourchettes. Or, entre 2 assiettes il n'y a qu'un couvert (e.g. 5 fourchettes à table). Il faut donc pour manger que la fourchette à la droite et à la gauche du philosophe soient libres : les fourchettes sont des ressources partagées (sémaphores) et le problème est de réguler l'accès à celles-ci pour que chaque philosophe puisse tout le temps alterner entre manger et penser.
