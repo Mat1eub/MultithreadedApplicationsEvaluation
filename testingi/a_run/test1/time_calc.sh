@@ -9,6 +9,5 @@ do
     for k in {1..5}
     do
         /usr/bin/time -f "$1, $i, %e" -a timeout 22s ./$1.o $i  2>&1
-        /usr/bin/time -f "$2, $i, %e" -a timeout 22s ./$2.o $i  2>&1
     done
 done
