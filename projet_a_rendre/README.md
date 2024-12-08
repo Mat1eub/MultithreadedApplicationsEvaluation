@@ -8,9 +8,7 @@ This section is here to explain how to run the project.
 
 ### Folders
 
-* `headers` folder, contains the fonctions' signatures and their documentation (make sure to enable IntelliSense to get function documentation on hover)
 * `results` folder which contains graphs for the evaluation of performance
-* `scripts` folder will contains the python scripts to make graphs and calculation of the evaluation
 * `src` folder is where we put all our code, every task is separated in a single file with the name of the problem and the main file centralizes all the functions and is responsible for launching the threads for each problem.
 
 ### Makefile
