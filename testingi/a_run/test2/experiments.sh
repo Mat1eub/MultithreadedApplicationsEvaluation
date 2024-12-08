@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-make all
+timeout 355s make all
