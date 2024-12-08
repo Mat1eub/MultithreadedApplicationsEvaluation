@@ -4,12 +4,11 @@ import numpy as np
 
 
 
-#data = pd.DataFrame(pd.read_csv("output.csv"))
-data = pd.DataFrame(pd.read_csv("performances_part1.csv"))
+data = pd.DataFrame(pd.read_csv("results/output.csv"))
 
 
-probl = ["philo_graphs","prodcons_graphs","readwrite_graphs"]
-nom_probl = ["Problème des philosophes", "Problème des producteurs - consomateurs",  "Problème des readers - writers"]
+probl = data["problem"].unique()
+nom_probl = probl
 n = len(probl)
 
 for i in range(n):
@@ -30,7 +29,6 @@ for i in range(n):
 
    plt.plot(x, y_mean)
    plt.boxplot(y, positions=x)
-
 
    plt.xlabel('Nombre de threads')
    plt.ylabel('Temps [s]')

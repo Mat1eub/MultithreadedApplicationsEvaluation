@@ -41,6 +41,8 @@ make ts : run the test and set algoritm with basis concurence
 
 make tts : run the test and set algoritm with basis concurence
 
+make all : make all the comand above
+
 for all the program above the output wil be locate in results an be name output.csv 
 
 make graf: to plot all result that is locate in output.csv
