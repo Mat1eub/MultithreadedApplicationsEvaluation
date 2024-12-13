@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fctsemaphore_TTS.c"
+#include "../include/fctsemaphore_TTS.h"
 
 int N;
 Semaphore* forks;

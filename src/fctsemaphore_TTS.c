@@ -1,14 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
+#include "../include/fctsemaphore_TTS.h"
 
-// meme lock unlock que test and test and set
 void lock(int* verou) {
     int etat = 1;
     
     asm(
-        "all:\n\t"
-        "testl %1, %0\n\t" 
+        "all:\n\t"                  // Test the current value of the lock (verou)
+        "testl %1, %0\n\t"          // If lock is 1 (set), jump to "all" and retry (busy-wait)
         "jnz all\n\t"
         "enter:\n\t"
         "xchgl %1, %0\n\t"
@@ -22,20 +19,12 @@ void lock(int* verou) {
 
 void unlock(int* verou) {
     asm( 
-        "movl $0, %0\n\t"       
+        "movl $0, %0\n\t"           // Unlock the lock without xchg 
         : "+m"(*verou)          
         :                     
     );
 }
 
-
-// besoin d'unne base de donner
-typedef struct {
-    int n; 
-    int verou;   
-} Semaphore;
-
-// init
 void initsem(Semaphore* sem, int valeur_initiale) {
     sem->n = valeur_initiale;
     sem->verou = 0; 
@@ -57,8 +46,6 @@ void locksem(Semaphore* sem) {
 }
 
 void unlocksem(Semaphore* sem) {
-
-    // on retire
     lock(&sem->verou);   
     sem->n++;      
     unlock(&sem->verou); 

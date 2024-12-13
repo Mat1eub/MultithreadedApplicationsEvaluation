@@ -11,6 +11,8 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)  # Crée les fichiers .o dans objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
+SEMATS = fctsemaphore_TS
+SEMATTS = fctsemaphore_TTS
 
 all:
 	bash performances.sh
@@ -20,10 +22,10 @@ all:
 philo: $(OBJ_DIR)/philosophers.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-philots: $(OBJ_DIR)/philosophers_with_sem_TS.o
+philots: $(OBJ_DIR)/philosophers_with_sem_TS.o $(OBJ_DIR)/$(SEMATS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-philotts: $(OBJ_DIR)/philosophers_with_sem_TTS.o
+philotts: $(OBJ_DIR)/philosophers_with_sem_TTS.o $(OBJ_DIR)/$(SEMATTS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 test_philosophers:
@@ -34,13 +36,13 @@ test_philosophers:
 prodcons: $(OBJ_DIR)/producerconsummer.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-prodconsts: $(OBJ_DIR)/producerconsummer_with_sem_TS.o
+prodconsts: $(OBJ_DIR)/producerconsummer_with_sem_TS.o $(OBJ_DIR)/$(SEMATS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-prodconstts: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o
+prodconstts: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o $(OBJ_DIR)/$(SEMATTS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-test_producerconsummer:
+test_producersconsummers:
 	bash prodcons_time.sh
 	make clean
 
@@ -48,20 +50,20 @@ test_producerconsummer:
 prodconsperso: $(OBJ_DIR)/producerconsummer.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-prodconstsperso: $(OBJ_DIR)/producerconsummer_with_sem_TS.o
+prodconstsperso: $(OBJ_DIR)/producerconsummer_with_sem_TS.o $(OBJ_DIR)/$(SEMATS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-prodconsttsperso: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o
+prodconsttsperso: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o $(OBJ_DIR)/$(SEMATTS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 # =========== READERS & WRITERS ============
 readwrite: $(OBJ_DIR)/readerwriter.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-readwritets: $(OBJ_DIR)/readerwriter_with_sem_TS.o
+readwritets: $(OBJ_DIR)/readerwriter_with_sem_TS.o $(OBJ_DIR)/$(SEMATS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-readwritetts: $(OBJ_DIR)/readerwriter_with_sem_TTS.o
+readwritetts: $(OBJ_DIR)/readerwriter_with_sem_TTS.o $(OBJ_DIR)/$(SEMATTS).o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 test_readerswriters:
