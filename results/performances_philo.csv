@@ -1,76 +1,101 @@
 problem,nb_of_threads,time
-philo,2,0.44
-philo,2,0.43
-philo,2,0.48
-philo,2,0.25
-philo,2,0.34
-philo,4,0.26
-philo,4,0.22
-philo,4,0.26
-philo,4,0.22
-philo,4,0.19
-philo,8,0.50
-philo,8,0.40
-philo,8,0.31
-philo,8,0.34
-philo,8,0.47
-philo,16,0.48
-philo,16,0.68
-philo,16,0.63
-philo,16,0.58
-philo,16,0.50
-philo,32,0.68
-philo,32,0.53
-philo,32,0.35
-philo,32,0.88
-philo,32,0.66
-philots,2,Command terminated by signal 11
-0.06
-philots,2,Command terminated by signal 11
-0.07
-philots,2,Command terminated by signal 11
-0.08
-philots,2,Command terminated by signal 11
-0.07
-philots,2,Command terminated by signal 11
-0.07
-philots,4,Command terminated by signal 11
-0.08
-philots,4,Command terminated by signal 11
-0.09
-philots,4,Command terminated by signal 11
-0.07
-philots,4,Command terminated by signal 11
-0.06
-philots,4,Command terminated by signal 11
-0.07
-philots,8,Command terminated by signal 11
-0.07
-philots,8,Command terminated by signal 11
-0.07
-philots,8,Command terminated by signal 11
-0.09
-philots,8,Command terminated by signal 11
-0.05
-philots,8,Command terminated by signal 11
-0.06
-philots,16,Command terminated by signal 11
-0.07
-philots,16,Command terminated by signal 11
-0.05
-philots,16,Command terminated by signal 11
-0.07
-philots,16,Command terminated by signal 11
-0.08
-philots,16,Command terminated by signal 11
-0.07
-philots,32,Command terminated by signal 11
-0.07
-philots,32,Command terminated by signal 11
-0.07
-philots,32,Command terminated by signal 11
-0.07
-philots,32,Command terminated by signal 11
-0.06
-philots,32,Command terminated by signal 11
-0.08
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philots,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
