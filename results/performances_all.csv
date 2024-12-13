@@ -1,1 +1,154 @@
 problem,nb_of_threads,time
+<<<<<<< HEAD
+=======
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+philo,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+prodcons,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,2,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,4,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,8,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,16,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+readwrite,32,/usr/bin/time: illegal option -- f
+usage: time [-al] [-h | -p] [-o file] utility [argument ...]
+>>>>>>> c14a831 (Structure and makefile upgrade)
