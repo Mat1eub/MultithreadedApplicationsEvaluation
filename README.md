@@ -1,6 +1,6 @@
 # Multithreaded Applications Evaluation
 
-The main goal of this project is to analyze the overall impact of threads and POSIX's syncronizations. The project was articulated in 2 phases, we first coded 3 famous problems related to synchronization with classic mutex and semaphore and analyse their performance. Then for the second phase, we implemented polling on those problems. All this is going to be descripted in details with our reasonment behind every issues we faced.
+The main goal of this project is to analyze the overall impact of threads and tool for syncronizations. The project was articulated in 2 phases, we first coded 3 famous problems related to synchronization with mutex and semaphore from the POSIX library. Then for the second phase, we implemented our version of busy waiting synchronization using atomic exchange on those problems. All this is going to be descripted in details with our reasonment behind every issues we faced.
 
 ## How to use this project
 
@@ -8,10 +8,10 @@ This section is here to explain how to run the project.
 
 ### Folders
 
-* `headers` folder, contains the fonctions' signatures and their documentation (make sure to enable IntelliSense to get function documentation on hover)
-* `results` folder which contains graphs for the evaluation of performance
-* `scripts` folder will contains the python scripts to make graphs and calculation of the evaluation
-* `src` folder is where we put all our code, every task is separated in a single file with the name of the problem and the main file centralizes all the functions and is responsible for launching the threads for each problem.
+* `include` folder, contains headers with the fonctions' signatures and their documentation,
+* `results` folder which contains data files, graphs from our execution and the python program we used to make those graphs (don't forget to change the path to `your_graphs` directory),
+* `scripts` folder will contains the python scripts to make graphs and calculation of the evaluation,
+* `src` folder is where we put all our code, you can inspect the code and see comments where we thought one would need a quick explanation for a better comprehension.
 
 ### Makefile
 
