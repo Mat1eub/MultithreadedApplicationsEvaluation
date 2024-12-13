@@ -2,7 +2,7 @@
 
 programs=("readwrite" "readwritets" "readwritetts")
 threads=(2 4 8 16 32)
-output="results/performances_readerwrier.csv"
+output="results/performances_readerwriter.csv"
 
 echo "problem,nb_of_threads,time" > $output # Headers of columns
 
