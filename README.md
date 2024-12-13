@@ -6,6 +6,8 @@ The main goal of this project is to analyze the overall impact of threads and to
 
 This section is here to explain how to run the project.
 
+You will need a python environment with matplotlib to display graphs.
+
 ### Folders
 
 * `include` folder, contains headers with the fonctions' signatures and their documentation,
@@ -15,17 +17,75 @@ This section is here to explain how to run the project.
 
 ### Makefile
 
-We then have a makefile to compile and facilitate your navigation
+We then have some Makefile rules to facilitate your navigation.
 
-| Command                        | What does it really do                                                                   | Default value of parameters |
-| ------------------------------ | ---------------------------------------------------------------------------------------- | --------------------------- |
-| `make philosophers N=...`    | Compile and execute of the philosophers' problem  with N philosphers                    | N=5                         |
-| `make prodcons P=... C=...`  | Compile and execute the producers-consummers' problem with P producers and C consummers | P=5, C=5                    |
-| `make readwrite R=... W=...` | Compile and execute the readers-writers' problem with R readers and W writers            | R=5, W=5                    |
-| `make clean`                 | Clean all the object and compiled files                                                  |                             |
-|                                |                                                                                          |                             |
+- **`make`**
+Compile and excecute all the problems. Show on 4 different graphs the performance of our synchronization tools.
 
-We decided to make a single main file and compile everything from this main.
+- **`make valgrind`**
+Perform a valgrind test on each problem.
+
+- **`make clean`**
+Delete all the objects and executable files generated.
+
+#### Philosophers
+- **`make philo`**
+Compile and generate the executable for the Philosophers' problem with classic implementation.
+
+- **`make philots`**
+Same but with our semaphores and Test-and-Set (TS) mechanism.
+
+- **`make philotts`**
+Same but with Test-and-Test-and-Set (TTS) mechanism.
+
+Usage of the Philosophers executable
+```bash
+./<philo_executable_name> <number_of_philosophers>
+```
+
+#### Producers & consummers
+
+- **`make prodcons`**
+Compile and generate the executable for the Producers and consummers' problem with classic implementation.
+
+- **`make prodconsts`**
+Same but with our semaphores and Test-and-Set (TS) mechanism.
+
+- **`make prodconstts`**
+Same but with Test-and-Test-and-Set (TTS) mechanism.
+
+If you want to execute the problem, you can with:
+```bash
+./<prodcons_executable_name> <total_number_of_threads>
+```
+But it will by default seperate your total number given in 2. However, if you want to specify how many producers and how many consummers you want, you can with:
+- **`make prodconsperso`**
+- **`make prodconspersots`**
+- **`make prodconspersotts`**
+And executing with:
+```bash
+./<prodconsperso_executable_name> <number_of_producers> <number_of_consummers>
+```
+#### Readers & writers
+
+- **`make readwrite`**
+Compile and generate the executable for the Readers and writers' problem with classic implementation.
+
+- **`make readwritets`**
+Same but with our semaphores and Test-and-Set (TS) mechanism.
+
+- **`make readwritetts`**
+Same but with Test-and-Test-and-Set (TTS) mechanism.
+
+
+If you want to see graphs only for one problem you can make those commands:
+```bash
+make test_philosophers
+make test_prodcons
+make test_readerswriters
+```
+
+We will now look in detail at all the problems and our reflexion behind our code. As this is not a substantial part of understanding the result of our work, we shall continue in French to make it easier to read and write. We will then switch back to English for the performance evaluation of the whole project and the conclusion.
 
 ## Problème des philosophes
 
@@ -73,11 +133,22 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 - il faut que le premier lecteur gagne l'accès avec un sémaphore pour que les prochains lecteurs puissent accéder à la structure de donnée tant qu'il reste au moins un lecteur. Il faut donc aussi garder une trace du nombre de lecteur en jeu,
 - chaque rédacteur doit gagner l'accès avec un sémaphore.
 
-# TO DO
+## Les différents types de verrous
 
-* [ ] Maybe too much, but a simulation of philosophers problem ?
-* [ ] Translate to english, pour l'intro et comment exécuter mais le reste c'est plus sympa à lire en français
-* [ ] Illustrations for problems
-* [ ] Finish how to execute
-* [ ] Peux-etre afficher un premier pseudo code pour montrer la reflexion derrière la version finale
-* [ ] Rappel sémaphore et mutex : Semaphore vs Mutex dans la partie philosphers
+### POSIX locks
+
+#### Performance des primitives POSIX sur ces problèmes de synchronisation
+
+### Test-And-Set (TAS) lock
+
+On remarque que toutes ces requêtes d'invaldiation du cache etc font rapidement baisser la performance du verrous. 
+GRAPHE DE PERFORMANCE TAS
+
+### Test and Test-And-Set (TTAS) lock
+
+#### Comparaison des performances
+
+## Conclusion 
+
+Let's conclude in english 
+# TO DO
