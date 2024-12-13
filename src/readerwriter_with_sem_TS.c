@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include "fctsemaphore_TS.c"
+#include "../include/fctsemaphore_TS.h"
 
 int rmutex = 0;  
 int wmutex = 0;  

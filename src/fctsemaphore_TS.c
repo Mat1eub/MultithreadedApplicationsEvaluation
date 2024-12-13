@@ -1,18 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-
-// meme lock unlock que test and set
+#include "../include/fctsemaphore_TS.h"
 
 void lock(int* verou) {
     int etat = 1;
     
+    // Test-and-set locking mechanism
     __asm__(
-        "enter:\n\t"
-        "xchgl %1, %0\n\t"
-        "testl %1, %1\n\t" 
-        "jnz enter"                         
-        : "+m"(*verou), "+r"(etat)              
+        "enter:\n\t"            
+        "xchgl %1, %0\n\t"          // Swap "etat" and "*verou"
+        "testl %1, %1\n\t"          // Test if the lock is still held
+        "jnz enter"                 // If the lock is still held jump to enter
+        : "+m"(*verou), "+r"(etat)
         :
     );
 
@@ -27,36 +24,27 @@ void unlock(int* verou) {
     );
 }
 
-// besoin d'unne base de donner
-typedef struct {
-    int n;
-    int verou;   
-} Semaphore;
-
-// init
 void initsem(Semaphore* sem, int valeur_initiale) {
     sem->n = valeur_initiale;
-    sem->verou = 0; 
+    sem->verou = 0;             // Initiate the lock value to 0 (unlocked)
 }
 
 void locksem(Semaphore* sem) {
     while (1) {
-        lock(&sem->verou); 
+        lock(&sem->verou);      // Acquire the lock for mutex
 
-        //verifie que c'est ok
+        // Check if sem counter is greater then 0
         if (sem->n > 0) { 
             sem->n--;     
             unlock(&sem->verou); 
-            break;
+            break;              // Exit the loop since the semaphore is acquired
         }
 
-        unlock(&sem->verou); 
+        unlock(&sem->verou);    // Release the lock if not greater then 0
     }
 }
 
 void unlocksem(Semaphore* sem) {
-
-    // on retire
     lock(&sem->verou);   
     sem->n++;      
     unlock(&sem->verou); 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "fctsemaphore_TTS.c"
+#include "../include/fctsemaphore_TTS.h"
 
 #define BUFFER_SIZE 8
 #define NB_ITEMS 131072
