@@ -1,7 +1,7 @@
 # Everything here is explained in the README at the section "How to use this project"
 # Variables
 CC = gcc
-CFLAGS = -Wall -pthread
+CFLAGS = -Wall -pthread -march=armv8-a 
 SRC_DIR = src
 OBJ_DIR = objects
 SRC = $(wildcard $(SRC_DIR)/*.c)  # Trouve tous les fichiers .c dans src

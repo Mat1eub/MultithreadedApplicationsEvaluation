@@ -1,5 +1,8 @@
 #ifndef FCTSEMAPHORE_TS_H
 #define FCTSEMAPHORE_TS_H
+#include <stdio.h>
+#include <stdlib.h>
+
 
 // Struct definition for our semaphore
 typedef struct {
