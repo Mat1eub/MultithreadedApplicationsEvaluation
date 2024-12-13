@@ -78,13 +78,6 @@ void* consummer(void* arg) {
 int main(int argc, char const *argv[]) { 
     const char* executable = argv[0];
 
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n", argv[0]);
-    }
-
-    P = atoi(argv[1]);
-    C = atoi(argv[2]);
-
     if (strcmp(executable, "./prodcons") == 0) {
         if (argc != 2) {
             fprintf(stderr, "Usage: %s <total_number_of_threads>\n", argv[0]);
@@ -104,6 +97,17 @@ int main(int argc, char const *argv[]) {
             P = (totalThreads + 1) / 2;
             C = totalThreads / 2;
         }
+    }
+
+    if(strcmp(executable,"./prodconsperso")==0){
+            
+        // make prodconsperso P=<number_of_producers> C=<number_of_consummers>
+        if(argc != 3){
+            fprintf(stderr, "Usage: %s P=<number_of_producers> C=<number_of_consummers>\n",argv[0]);
+        }
+        // Get P&C from commande line
+        P = atoi(argv[1]);
+        C = atoi(argv[2]);
     }
 
     if (P <= 0) {

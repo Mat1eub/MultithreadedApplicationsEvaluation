@@ -44,6 +44,16 @@ test_producerconsummer:
 	bash prodcons_time.sh
 	make clean
 
+# Personnalized number of P and C
+prodconsperso: $(OBJ_DIR)/producerconsummer.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+prodconstsperso: $(OBJ_DIR)/producerconsummer_with_sem_TS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+prodconsttsperso: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 # =========== READERS & WRITERS ============
 readwrite: $(OBJ_DIR)/readerwriter.o
 	$(CC) -o $@ $^ $(CFLAGS)
@@ -54,7 +64,7 @@ readwritets: $(OBJ_DIR)/readerwriter_with_sem_TS.o
 readwritetts: $(OBJ_DIR)/readerwriter_with_sem_TTS.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-test_readwrite:
+test_readerswriters:
 	bash readerwriter_time.sh
 	make clean
 
