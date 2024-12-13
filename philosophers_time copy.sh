@@ -2,7 +2,7 @@
 
 programs=("philo" "philo_tas" "philo_tts")
 threads=(2 4 8 16 32)
-output="results/performances_part1.csv"
+output="results/performances_philo.csv"
 
 echo "problem,nb_of_threads,time" > $output # Headers of columns
 

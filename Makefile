@@ -1,3 +1,4 @@
+# Everything here is explained in the README at the section "How to use this project"
 # Variables
 CC = gcc
 CFLAGS = -Wall -pthread
@@ -6,59 +7,58 @@ OBJ_DIR = objects
 SRC = $(wildcard $(SRC_DIR)/*.c)  # Trouve tous les fichiers .c dans src
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)  # Crée les fichiers .o dans objects
 
-PHILO = philosophers_exec
-PHILO2 = philo
-
-PRODCONS = producerconsummer_exec
-PRODCONS2 = prodcons
-
-# Valeur par défaut des variables
-N ?= 5
-P ?= 5
-C ?= 5
-
-# Pour l'instant philo, encore à décider d'un truc plus général
-all: $(PHILO) $(PRODCONS)
-
-
 # Compile les .c dans src et met le resultat ().o) dans objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 
+all:
+	bash performances.sh
+	make clean
+
 # =========== PHILOSOPHERS ===========
-$(PHILO): $(OBJ_DIR)/philosophers.o
-	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) run EXEC=$(PHILO) ARG=$(N)
-
-$(PHILO2): $(OBJ_DIR)/philosophers.o
+philo: $(OBJ_DIR)/philosophers.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-philo_tas : $(OBJ_DIR)/philosophers_with_sem_TS.o
+philots: $(OBJ_DIR)/philosophers_with_sem_TS.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-philo_tts : $(OBJ_DIR)/philosophers_with_sem_TTS.o
+philotts: $(OBJ_DIR)/philosophers_with_sem_TTS.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-philosophers: $(PHILO)
+test_philosophers:
+	bash philosophers_time.sh
 	make clean
 
 # =========== PRODUCERS & CONSUMMERS ============
-$(PRODCONS): $(OBJ_DIR)/producerconsummer.o
-	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) run EXEC=$(PRODCONS) ARG1=$(P) ARG2=$(C)
-
-$(PRODCONS2): $(OBJ_DIR)/producerconsummer.o
+prodcons: $(OBJ_DIR)/producerconsummer.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-producerconsummer: $(PRODCONS)
+prodconsts: $(OBJ_DIR)/producerconsummer_with_sem_TS.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
+prodconstts: $(OBJ_DIR)/producerconsummer_with_sem_TTS.o
+	$(CC) -o $@ $^ $(CFLAGS)
 
-# Facilitate each execution
-run:
-	./$(EXEC) $(ARG) $(ARG1) $(ARG2)
+test_producerconsummer:
+	bash prodcons_time.sh
+	make clean
+
+# =========== READERS & WRITERS ============
+readwrite: $(OBJ_DIR)/readerwriter.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+readwritets: $(OBJ_DIR)/readerwriter_with_sem_TS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+readwritetts: $(OBJ_DIR)/readerwriter_with_sem_TTS.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+test_readwrite:
+	bash readerwriter_time.sh
+	make clean
 
 clean:
-	rm -f $(OBJ) $(PHILO) $(PRODCONS) $(PHILO2) $(PRODCONS2)
+	rm -f $(OBJ) philo philots philotts prodcons prodconsts prodconstts readwrite readwritets readwritetts
 
 .PHONY: clean run philosophers all
