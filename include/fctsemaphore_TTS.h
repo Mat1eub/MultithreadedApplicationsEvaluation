@@ -1,6 +1,7 @@
 #ifndef FCTSEMAPHORE_TTS_H
 #define FCTSEMAPHORE_TTS_H
-
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @struct Semaphore
