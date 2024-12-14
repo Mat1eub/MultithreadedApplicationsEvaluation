@@ -21,6 +21,10 @@ all:
 	bash $(SCRIPT_DIR)/performances.sh
 	make clean
 
+valgrind:
+	bash $(SCRIPT_DIR)/valgrind.sh
+	make clean
+
 # =========== PHILOSOPHERS ===========
 philo: $(OBJ_DIR)/philosophers.o | $(BIN_DIR)
 	$(CC) -o $(BIN_DIR)/$@ $^ $(CFLAGS)
