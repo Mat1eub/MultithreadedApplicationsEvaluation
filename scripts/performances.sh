@@ -1,6 +1,6 @@
 #!/bin/bash
 
-programs=("philo" "philo_tas" "philo_tts" "prodcons" "prodconsts" "prodconstts" "readwrite" "readwritets" "readwrtietts")
+programs=("philo" "philo_tas" "philo_tts" "prodcons" "prodconsts" "prodconstts" "readwrite" "readwritets" "readwritetts")
 threads=(2 4 8 16 32)
 output="results/performances_all.csv"
 
