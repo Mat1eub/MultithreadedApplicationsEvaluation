@@ -7,12 +7,12 @@
         int etat = 1;
         asm(
             "all:\n\t"
-            "testl %1, %0\n\t"   // Test if the lock is already acquired
-            "jnz all\n\t"        // If the lock is acquired, jump to 'all' (retry)
+            "testl %1, %0\n\t"      // Test if the lock is already acquired
+            "jnz all\n\t"           // If the lock is acquired, jump to 'all' (retry)
             "enter:\n\t"
-            "xchgl %1, %0\n\t"   // Exchange the values between *verou and etat
-            "testl %1, %1\n\t"    // Test if the lock is successfully acquired
-            "jnz enter\n\t"       // If not, retry
+            "xchgl %1, %0\n\t"      // Exchange the values between *verou and etat
+            "testl %1, %1\n\t"      // Test if the lock is successfully acquired
+            "jnz enter\n\t"         // If not, retry
             : "+m"(*verou), "+r"(etat)
             :
         );
@@ -37,20 +37,20 @@
         int etat = 1;
         asm(
             "enter:\n\t"
-            "ldxr %w2, [%x0]\n\t"        // Charge *verou dans %w2
-            "cbnz %w2, enter\n\t"         // Si *verou != 0, recommence (verrouillé)
-            "stxr %w1, %w2, [%x0]\n\t"    // Essaye d'écrire 1 à *verou si non verrouillé
-            "cbnz %w1, enter\n\t"         // Si l'écriture échoue, recommence
-            : "+r"(*verou), "+r"(etat)    // Les registres utilisés
+            "ldxr %w2, [%x0]\n\t"            // *verou in %w2
+            "cbnz %w2, enter\n\t"           // if *verou != 0, retry (locked)
+            "stxr %w1, %w2, [%x0]\n\t"      // try to write 1 in *verou if not locked
+            "cbnz %w1, enter\n\t"           // if writing fails restart
+            : "+r"(*verou), "+r"(etat) 
             : "r"(verou)
-            : "%w1", "%w2"                // Registres utilisés dans l'asm
+            : "%w1", "%w2"
         );
     }
 
     void unlock(int* verou) {
         asm(
-            "mov x1, #0\n\t"              // Met x1 à 0 (déverrouille)
-            "str x1, [%x0]\n\t"           // Stocke 0 dans *verou
+            "mov x1, #0\n\t"      
+            "str x1, [%x0]\n\t"          
             : 
             : "r" (verou)
         );

@@ -105,7 +105,14 @@ Il suffirait de supprimer une de ces conditions pour éviter un deadlock.
 
 Dans cette version, on a une situation binaire : un philosophe détient 0 ou 2 fourchettes mais jamais une seule (première des 3 conditions). De plus, le dernier philosophe commence par prendre la fourchette de gauche tandis que les autres commencent par la fourchette de droite (deuxième condition). Pourquoi cette deuxième condition ? Car il faut toujours garder en tête qu'un philosophe pourrait être trop lent et risquer de ne jamais avoir de fourchette disponible.
 
+On a remarqué, vous le verrez dans la section d'analyse de performances, qu'utiliser uniquement des sémaphores augmentait le temps d'exécution. Il est en fait important de prendre le temps de réfléchir aux différentes options entre sémaphores et mutex afin d'optimiser au mieux le temps d'exécution d'un problème de nos machines. Nous avons finalement opté pour une version impliquant 2 mutex et 1 sémaphore.
+
 ## Problème des producteurs-consommateurs
+
+Ici, on a un **producteur** qui tente d'envoyer (produire) de l'information sur un *buffer* qu'un **consommateur** va consommer. Ce *buffer* qu'on modélise avec un tableau partagé de 8 places dans lequel le producteur va devoir écrire son *identifiant* (ici, juste son numéro de 0 à P-1).
+
+S'il y a au moins une case vide dans le tempon, le producteur va produire dans une case libre. Le consommateur lui doit attendre qu'une case soit remplie pour consommer. Il est alors convenu qu'on peut modéliser ces cases remplies et vides par 2 sémaphores (je vous renvoie sur la section des sémaphores pour une meilleure compréhension). 
+
 // On met l'incrémentation dans le même mutex_prodcons,
 
 // une idée de faire autrement c'est de rajouter un mutex_prodcons pour incrémenter cette variable
@@ -136,6 +143,17 @@ On veut donc un accès **partagé** en lecture et un accès **exclusif** en écr
 ## Les différents types de verrous
 
 ### POSIX locks
+
+#### Sémaphore
+
+Un sémaphore est avant tout une variable qui sera partagée entre les threads. C'est un entier qui ne peut prendre que des valeurs positives ou nulle.
+
+Deux uniques opérations peuvent leur être appliquées (fonctions de la librairie POSIX):
+
+- [sem_post(3)](https://man7.org/linux/man-pages/man3/sem_post.3.html): incrémente (déverouille) une fois le sémaphore,
+- [sem_wait(3)](https://man7.org/linux/man-pages/man3/sem_wait.3.html): décrémente (verouille) une fois le sémaphore.
+
+Donc un thread peut exécuter sem_wait(s) si s>0, sinon l'appel suspend le thread et il attend. Si un autre thread execute sem_post(s) (sur le même sémaphore s!) la valeur du sémaphore augmente de 1 et le thread qui attendait depuis tout à l'heure pourra bel et bien utiliser sem_wait(s) et avoir accès, généralement, à une section critique.
 
 #### Performance des primitives POSIX sur ces problèmes de synchronisation
 
