@@ -79,6 +79,6 @@ for ax in axes:
     ax.grid(True)
 plt.tight_layout()
 
-# Sauvegarder et afficher le graphique
-plt.savefig("test_and_set_comparison_vertical_with_legend.pdf")
+# Save and show the graphs
+plt.savefig("my_graphs/test_and_set_comparison_vertical_with_legend.pdf") # Path to change
 plt.show()
