@@ -109,7 +109,7 @@ On a remarqué, vous le verrez dans la section d'analyse de performances, qu'uti
 
 ## Problème des producteurs-consommateurs
 
-Ici, on a un **producteur** qui tente d'envoyer (produire) de l'information sur un *buffer* qu'un **consommateur** va consommer. Ce *buffer* qu'on modélise avec un tableau partagé contient 8 places dans lequel le producteur va devoir écrire son *identifiant* (ici, juste son numéro de 0 à P-1).
+Ici, on a un **producteur** qui tente d'envoyer (produire) de l'information sur un *buffer* qu'un **consommateur** va consommer. Ce *buffer* qu'on modélise avec un tableau partagé contient 8 places dans lesquelles le producteur va devoir écrire son *identifiant* (ici, son numéro de 0 à P-1).
 
 S'il y a au moins une case vide dans le tempon, le producteur va produire dans une case libre. Le consommateur lui doit attendre qu'une case soit remplie pour consommer. Il est alors convenu qu'on peut modéliser ces cases remplies et vides par 2 sémaphores (je vous renvoie sur la section des sémaphores pour une meilleure compréhension). 
 
